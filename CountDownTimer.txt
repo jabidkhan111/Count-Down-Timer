@@ -1,0 +1,20 @@
+
+
+new CountDownTimer(60000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                binding.resend.setText(""+millisUntilFinished/1000);
+                binding.resend.setEnabled(false);
+            }
+
+            @Override
+            public void onFinish() {
+                binding.resend.setText("Resend");
+                binding.resend.setEnabled(true);
+
+                binding.resend.setOnClickListener(v -> {
+                    startActivity(new Intent(PhoneVerificationActivity.this,MainActivity.class));
+                    finish();
+                });
+            }
+        }.start();
